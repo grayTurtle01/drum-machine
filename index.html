@@ -24,17 +24,17 @@
                     <div id="drum-machine">
 
                        <div id="buttons"> 
-                        <DrumPad name="Q"/>
-                        <DrumPad name="W"/>
-                        <DrumPad name="E"/>
+                        <DrumPad name="Q" sound="Heater-1"/>
+                        <DrumPad name="W" sound="Heater-2"/>
+                        <DrumPad name="E" sound="Heater-3"/>
 
-                        <DrumPad name="A"/>
-                        <DrumPad name="S"/>
-                        <DrumPad name="D"/>
+                        <DrumPad name="A" sound="Heater-4_1"/>
+                        <DrumPad name="S" sound="Heater-6"/>
+                        <DrumPad name="D" sound="Dsc_Oh"/>
 
-                        <DrumPad name="Z"/>
-                        <DrumPad name="X"/>
-                        <DrumPad name="C"/>
+                        <DrumPad name="Z" sound="Kick_n_Hat"/>
+                        <DrumPad name="X" sound="RP4_KICK_1"/>
+                        <DrumPad name="C" sound="Cev_H2"/>
                        </div>
                         
                         <div id="controls">
@@ -46,7 +46,14 @@
         }
 
         class DrumPad extends React.Component{
-          
+          constructor(props){
+            super(props)
+
+            this.state = {
+                cloud_path : "https://s3.amazonaws.com/freecodecamp/drums/"
+            }
+          }
+            
 
           handleClick = (e) => {
             let button = e.target;
@@ -64,10 +71,13 @@
                         id={this.props.name + '-button'}
                         onClick={this.handleClick}
                         >
+
                     {this.props.name}
+
                     <audio id={this.props.name}
                            className="clip" 
-                           src={this.props.name + '.mp3'}>
+                           src={this.state.cloud_path + this.props.sound + '.mp3'}
+                           >
 
                     </audio>
                 </button> )
