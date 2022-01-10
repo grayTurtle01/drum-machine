@@ -58,7 +58,7 @@
                         onClick={this.handleClick}
                         >
                     {this.props.name}
-                    <audio>
+                    <audio id={this.props.name + '-audio'}>
                       <source className="clip" src={this.props.name + '.mp3'}/>  
                     </audio>
                 </button> )
@@ -67,4 +67,5 @@
 
         ReactDOM.render(<DrumMachine/>, document.querySelector("#root"))
     </script>
+    <script src="main.js"></script>
 </html>
