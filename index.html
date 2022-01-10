@@ -12,31 +12,40 @@
     </head>
     <body>
         <div id="root"></div>
-        
-        <div id="drum-machine">
-            
-            <button class="drum-pad" id="q-button">Q</button>
-            <button class="drum-pad" id="w-button">W</button>
-            <button class="drum-pad" id="e-button">E</button>
-
-            <button class="drum-pad" id="a-button">A</button>
-            <button class="drum-pad" id="s-button">S</button>
-            <button class="drum-pad" id="d-button">D</button>
-
-            <button class="drum-pad" id="z-button">Z</button>
-            <button class="drum-pad" id="x-button">X</button>
-            <button class="drum-pad" id="c-button">C</button>
-                
-            
-            <div id="display"></div>
-        </div>
+    
     </body>
 
     <script type="text/babel">
         class DrumMachine extends React.Component{
             render(){
-                return( <p> Hello React </p>)
+                return(
+                    <div id="drum-machine">
+                        <DrumPad name="Q"/>
+                        <DrumPad name="W"/>
+                        <DrumPad name="E"/>
+
+                        <DrumPad name="A"/>
+                        <DrumPad name="S"/>
+                        <DrumPad name="D"/>
+
+                        <DrumPad name="Z"/>
+                        <DrumPad name="X"/>
+                        <DrumPad name="C"/>
+                        
+                        <div id="display"></div>
+                    </div>
+                )
             }
+        }
+
+        class DrumPad extends React.Component{
+            
+          render(){
+              return(
+                <button className="drum-pad" id={this.props.name + '-button'}>
+                    {this.props.name}
+                </button> )
+          }  
         }
 
         ReactDOM.render(<DrumMachine/>, document.querySelector("#root"))
