@@ -6,10 +6,15 @@ function foo(event){
  
   try {
     let audio = document.querySelector(`#${letter}`)
-    audio.play()
+
+    let check = document.querySelector('#on_off')
+    if( check.checked){
+      audio.play()
+      let display = document.querySelector('#display')
+      display.innerText = letter
+    }
+
     
-    let display = document.querySelector('#display')
-    display.innerText = letter
 
   } catch (error) {
     
