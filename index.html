@@ -19,25 +19,47 @@
 
     <script type="text/babel">
         class DrumMachine extends React.Component{
+            constructor(props){
+                super(props)
+
+                this.state = {
+                    is_on: true
+                }
+            }     
+
+         
+
+            on_off = (e) => {
+                this.setState( (state, props) =>( {
+                    is_on: !state.is_on
+                }))
+
+
+            }
+
             render(){
                 return(
                     <div id="drum-machine">
 
                        <div id="buttons"> 
-                        <DrumPad name="Q" sound="Heater-1"/>
-                        <DrumPad name="W" sound="Heater-2"/>
-                        <DrumPad name="E" sound="Heater-3"/>
+                        <DrumPad name="Q" sound="Heater-1" is_on={this.state.is_on}/>
+                        <DrumPad name="W" sound="Heater-2"  is_on={this.state.is_on}/>
+                        <DrumPad name="E" sound="Heater-3" is_on={this.state.is_on}/>
 
-                        <DrumPad name="A" sound="Heater-4_1"/>
-                        <DrumPad name="S" sound="Heater-6"/>
-                        <DrumPad name="D" sound="Dsc_Oh"/>
+                        <DrumPad name="A" sound="Heater-4_1" is_on={this.state.is_on}/>
+                        <DrumPad name="S" sound="Heater-6" is_on={this.state.is_on}/>
+                        <DrumPad name="D" sound="Dsc_Oh" is_on={this.state.is_on}/>
 
-                        <DrumPad name="Z" sound="Kick_n_Hat"/>
-                        <DrumPad name="X" sound="RP4_KICK_1"/>
-                        <DrumPad name="C" sound="Cev_H2"/>
+                        <DrumPad name="Z" sound="Kick_n_Hat" is_on={this.state.is_on}/>
+                        <DrumPad name="X" sound="RP4_KICK_1" is_on={this.state.is_on}/>
+                        <DrumPad name="C" sound="Cev_H2" is_on={this.state.is_on}/>
                        </div>
                         
                         <div id="controls">
+                            State:{ this.state.is_on ? 'On': 'Off'} <br/>
+                            On/Off: <input type="checkbox" id="on_off" 
+                                           onChange={this.on_off} 
+                                           checked={this.state.is_on}/>
                             <div id="display"></div>
                         </div>
                     </div>
@@ -56,12 +78,16 @@
             
 
           handleClick = (e) => {
-            let button = e.target;
-            let audio = button.querySelector('audio')
-            audio.play()
+            
+            if( this.props.is_on){
+            
+                let button = e.target;
+                let audio = button.querySelector('audio')
+                audio.play()
 
-            let display = document.querySelector('#display')
-            display.innerText = this.props.name
+                let display = document.querySelector('#display')
+                display.innerText = this.props.name
+            }
 
           }
 
