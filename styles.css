@@ -36,7 +36,15 @@ body{
 
 
 #controls{
-  width: 150px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  align-items: center;
   
 }
 
