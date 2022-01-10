@@ -8,6 +8,8 @@
         <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
+
+        <link rel="stylesheet" href="styles.css">
         
     </head>
     <body>
@@ -20,6 +22,8 @@
             render(){
                 return(
                     <div id="drum-machine">
+
+                       <div id="buttons"> 
                         <DrumPad name="Q"/>
                         <DrumPad name="W"/>
                         <DrumPad name="E"/>
@@ -31,6 +35,7 @@
                         <DrumPad name="Z"/>
                         <DrumPad name="X"/>
                         <DrumPad name="C"/>
+                       </div>
                         
                         <div id="display"></div>
                     </div>
@@ -39,11 +44,23 @@
         }
 
         class DrumPad extends React.Component{
-            
+
+          handleClick = (e) => {
+            let button = e.target;
+            let audio = button.querySelector('audio')
+            audio.play()
+          }
+
           render(){
               return(
-                <button className="drum-pad" id={this.props.name + '-button'}>
+                <button className="drum-pad" 
+                        id={this.props.name + '-button'}
+                        onClick={this.handleClick}
+                        >
                     {this.props.name}
+                    <audio>
+                      <source className="clip" src={this.props.name + '.mp3'}/>  
+                    </audio>
                 </button> )
           }  
         }
