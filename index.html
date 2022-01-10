@@ -65,8 +65,10 @@
                         onClick={this.handleClick}
                         >
                     {this.props.name}
-                    <audio id={this.props.name + '-audio'}>
-                      <source className="clip" src={this.props.name + '.mp3'}/>  
+                    <audio id={this.props.name}
+                           className="clip" 
+                           src={this.props.name + '.mp3'}>
+
                     </audio>
                 </button> )
           }  

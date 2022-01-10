@@ -5,7 +5,7 @@ function foo(event){
   let letter = code.slice(3)
  
   try {
-    let audio = document.querySelector(`#${letter}-audio`)
+    let audio = document.querySelector(`#${letter}`)
     audio.play()
     
     let display = document.querySelector('#display')
@@ -14,7 +14,5 @@ function foo(event){
   } catch (error) {
     
   }
-
-
 
 }
