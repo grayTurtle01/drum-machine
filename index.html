@@ -44,11 +44,16 @@
         }
 
         class DrumPad extends React.Component{
+          
 
           handleClick = (e) => {
             let button = e.target;
             let audio = button.querySelector('audio')
             audio.play()
+
+            let display = document.querySelector('#display')
+            display.innerText = this.props.name
+
           }
 
           render(){

@@ -7,6 +7,10 @@ function foo(event){
   try {
     let audio = document.querySelector(`#${letter}-audio`)
     audio.play()
+    
+    let display = document.querySelector('#display')
+    display.innerText = letter
+
   } catch (error) {
     
   }
