@@ -6,6 +6,8 @@ function foo(event){
  
   try {
     let audio = document.querySelector(`#${letter}`)
+    let volume = document.querySelector('#slider').value
+    audio.volume = volume/100
 
     let check = document.querySelector('#on_off')
     if( check.checked){
