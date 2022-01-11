@@ -11,6 +11,7 @@
 
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="switch.css">
+        <link rel="stylesheet" href="animations.css">
         
     </head>
     <body>
@@ -94,11 +95,20 @@
             if( this.props.is_on){
             
                 let button = e.target;
+
+                // play audio
                 let audio = button.querySelector('audio')
                 audio.play()
 
+                // show message    
                 let display = document.querySelector('#display')
                 display.innerText = this.props.sound
+
+                // run animation
+                button.classList.add('click-animation')
+                button.addEventListener('animationend', function(){
+                    this.classList.remove('click-animation')
+                })
             }
 
           }

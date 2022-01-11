@@ -12,6 +12,15 @@ function foo(event){
       audio.play()
       let display = document.querySelector('#display')
       display.innerText = letter
+
+      // Animation
+      let button = document.querySelector(`#${letter}-button`)
+      
+      button.classList.add('click-animation')
+      button.addEventListener('animationend', function(){
+          this.classList.remove('click-animation')
+      })
+
     }
 
     
